@@ -12,4 +12,6 @@ public interface MentorshipRequestDAO {
     List<MentorshipRequest> findByMentorId(int mentorId);
     boolean save(MentorshipRequest request);
     boolean delete(int id);
+
+    void updateStatus(int requestId, String newStatus);
 }

@@ -12,19 +12,28 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Simulate student login
         try {
-            int studentId = Integer.parseInt(request.getParameter("studentId"));
-            String name = request.getParameter("studentName");
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            String name = request.getParameter("userName");
+            String role = request.getParameter("role");
 
-            // Set in session
             HttpSession session = request.getSession();
-            session.setAttribute("studentId", studentId);
-            session.setAttribute("studentName", name);
+            session.setAttribute("userId", userId);
+            session.setAttribute("userName", name);
+            session.setAttribute("role", role);
 
-            response.sendRedirect("student"); // Redirect to student dashboard
+            if ("STUDENT".equalsIgnoreCase(role)) {
+                session.setAttribute("studentId", userId);
+                response.sendRedirect("student");
+            } else if ("MENTOR".equalsIgnoreCase(role)) {
+                session.setAttribute("mentorId", userId);
+                response.sendRedirect("mentor");
+            } else {
+                throw new IllegalArgumentException("Invalid role");
+            }
+
         } catch (NumberFormatException e) {
-            request.setAttribute("error", "Invalid Student ID format");
+            request.setAttribute("error", "Invalid ID format");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

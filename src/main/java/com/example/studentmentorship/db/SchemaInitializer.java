@@ -58,8 +58,8 @@ public class SchemaInitializer {
                  );
                  
                  INSERT INTO mentorship_requests (student_id, mentor_id, subject_id, status) VALUES
-                 (1, NULL, 1, 'PENDING'),
-                 (2, 3, 2, 'APPROVED'),
+                 (1, 2, 1, 'APPROVED'),
+                 (2, 3, 2, 'PENDIND'),
                  (1, 4, 3, 'REJECTED');
                 
             """);

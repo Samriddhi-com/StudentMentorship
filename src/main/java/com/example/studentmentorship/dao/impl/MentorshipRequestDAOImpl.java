@@ -120,6 +120,11 @@ public class MentorshipRequestDAOImpl implements MentorshipRequestDAO {
         return false;
     }
 
+    @Override
+    public void updateStatus(int requestId, String newStatus) {
+
+    }
+
     // Helper method
     private MentorshipRequest extractRequest(ResultSet rs) throws SQLException {
         return new MentorshipRequest(

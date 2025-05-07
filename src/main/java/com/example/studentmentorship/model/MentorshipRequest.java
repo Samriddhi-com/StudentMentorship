@@ -70,4 +70,7 @@ public class MentorshipRequest {
     public void setMentorName(String mentorName) {
         this.mentorName = mentorName;
     }
+
+    public void setStudentName(String name) {
+    }
 }
